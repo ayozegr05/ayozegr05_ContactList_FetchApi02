@@ -1,3 +1,30 @@
-/* 
-    General Styles
-*/
+
+.taskBg.completed {
+   
+    background-color: #f0f0f0;
+  }
+  
+  
+  .taskText.completed {
+ 
+    text-decoration: line-through;
+    color: #fc0707;
+  }
+  .taskText.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+  }
+  .white::placeholder {
+    color: white;
+    font-weight: bold;
+  }
+  .white{
+    font-weight: bold;
+  }
+  .ringcontainer{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .pepe{display:flex;
+  justify-content: center;}
