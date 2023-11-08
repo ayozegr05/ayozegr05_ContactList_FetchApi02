@@ -69,6 +69,16 @@ export const ToDoList = () => {
     });
     setPost(updatedTasks);
   };
+  const togglePending = (id) => {
+    const updatedTasks = posts.map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setPost(updatedTasks);
+  };
+
   const countDoneTask = posts.filter((post) => !post.completed).length;
   
 
@@ -106,7 +116,7 @@ export const ToDoList = () => {
                       <div>
                         <span onClick={() => toggleComplete(post.id)}
                           className={
-                            post.completed ? "text-success pe-4 taskText completed" : "text-danger pe-4"
+                            post.completed ? "text-success pe-4 taskText completed" : post.pendging ? "text-danger pe-4" : "text-danger pe-4"
                           }
                         >
                           {post.id}. {post.title}
@@ -114,13 +124,17 @@ export const ToDoList = () => {
                       </div>
                       <div>
                       {post.completed ? (
+                        <div>
                           <span onClick={() => handleRemoveTask(post.id)}>
-                          <i className="fas fa-times text-danger"></i>
-                          <i className="fas fa-check text-success ms-2"></i>
+                          <i className="fas fa-trash text-danger pe-2"></i>
                           </span>
+                          <span onClick={() => togglePending(post.id)}>
+                            <i className="fas fa-ellipsis-h text-danger"></i>
+                          </span>
+                        </div>
                         ) : (
                           <span onClick={() => toggleComplete(post.id)}>
-                            <i className="fas fa-ellipsis-h text-danger"></i>
+                            <i className="fas fa-check text-success ms-2"></i>
                           </span>
                         )}
                       </div>
